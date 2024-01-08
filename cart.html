@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css"
+    integrity="sha512-6lLUdeQ5uheMFbWm3CP271l14RsX1xtx+J5x2yeIDkkiBpeVTNhTqijME7GgRKKi6hCqovwCoBTlRBEC20M8Mg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css"
+    integrity="sha512-wR4oNhLBHf7smjy0K4oqzdWumd+r5/+6QO/vDda76MW5iug4PT7v86FoEkySIJft3XA0Ae6axhIvHrqwm793Nw=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css"
+    integrity="sha512-6lLUdeQ5uheMFbWm3CP271l14RsX1xtx+J5x2yeIDkkiBpeVTNhTqijME7GgRKKi6hCqovwCoBTlRBEC20M8Mg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-ezpkpnl4FoH1wyrOmJmOX41sdF8W+8n2V5JFiGcvxvBM1W0dsFIrISuZt2+UqDiQ" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <title>Cart</title>
+</head>
+<body>
+  <section>
+    <nav class="nav collapsible"  style="z-index: 0;">
+      <div>
+      <a href="/">
+        <img src="images/site_logo.png" alt="logo images" />
+      </a>
+    </div>
+    <div>
+      <img
+    src="images/toggle-zero.png"
+    alt="toggler image"
+    class="icon nav__toggler"
+    id="menuToggle"
+  />
+</div>
+
+    
+      <div class="nav-container  nav__list collapsible__content">
+        <div class="nav-item">
+          <a href="#">iNICIO</a>
+          <div class="sub-list">
+            <div class="sublist-item"><a href="#">Sub-item</a></div>
+            <div class="sublist-item"><a href="#">Sub-item</a></div>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="#">PRODUCTS</a>
+          <div class="sub-list">
+            <div class="sublist-item"><a href="product.html">All products</a></div>
+            <div class="sublist-item"><a href="#">Sub-item 2</a></div>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="#">MIS COMPRAS</a>
+          <div class="sub-list">
+            <div class="sublist-item"><a href="#">Sub-item 1</a></div>
+            <div class="sublist-item"><a href="#">Sub-item 2</a></div>
+          </div>
+        </div>
+        <div class="nav-item"><a href="#">BLOG</a></div>
+        <div class="nav-item"><a href="#">NOSOTROS</a></div>
+        <div class="nav-item"><a href="#">CONTACTENOS</a></div>
+        <div class="nav-item">
+          <a href="cart.html">
+            <i class="fas fa-shopping-cart"> <span class="cart-quan" id="cartQuantity">0</span></i>
+          </a>
+        </div>
+      </div>
+    </nav>
+  </section>
+      <section class="hero">
+        <div class="slider">
+         
+        </div>
+      </section>
+     </section>
+    <section class="cart">
+      <div class="cart--main">
+       
+         <table>
+          <thead>
+            <tr class="tr">
+              <td width="10%">&nbsp;</td>
+              <td width="35%">Productos</td>
+              <td width="15%">Precio</td>
+              <td width="20%">Cantidad</td>
+              <td width="15%">Total</td>
+              <td width="5%">&nbsp;</td>
+            </tr>
+          </thead>
+
+          <tbody class="tbody">
+               
+          </tbody>
+        </table>
+      </div>
+    </section>
+     <section class="bill">
+      <div class="main--bill">
+        <div class="search--bar">
+          <div>
+          
+          <input class="input" type="text" placeholder="busqueda" id="searchInput">
+        </div>
+           <div class="button">
+            <button class="btn"  onclick="search(); return false;">BUSCAR</button>
+          </div>
+          
+        </div>
+        <div class="table">
+        <table>
+          <thead>
+            <tr class="tr">
+              <td width="100%"><span>TOTAL</span> BASKET</td>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr class="tr">
+              <td width="10%">SUBTOTAL</td>
+              <td id="subtotal" width="35%">0</td>
+            </tr>
+            <tr class="tr">
+              <td width="10%">VAT:</td>
+              <td width="35%">1.008</td>
+            </tr>
+            <tr class="tr">
+              <td width="10%">DELIVERY</td>
+              <td width="35%">1.5</td>
+            </tr>
+            <tr class="tr">
+              <td  width="10%">Total</td>
+              <td  id="total" width="35%">0</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      </div>
+     </section>
+     <footer class="block block--dark footer">
+      <div class="container grid footer__sections">
+       
+     <section class="collapsible collapsible--expanded footer__section">
+       <header class="collapsible--header">
+         <h2 class="collapsible__heading footer__heading nav__item-1">Item 1 </h2>
+             <svg class="icon icon--primary collapsible--chevron">
+               <use xlink:href="images/sprite.svg#easy"></use>
+             </svg>
+        
+       </header>
+       <div class="collapsible__content">
+       <ul>
+         <li class="nav__item-1"><a href="#">Website Hosting</a></li>
+         <li class="nav__item-1"><a href="#">Free Automated Wordpress</a></li>
+         <li class="nav__item-1"><a href="#">Migrations</a></li>
+       </ul>
+      </div>
+     </section>
+     <section class="collapsible footer__section">
+       <header class="collapsible--header">
+         <h2 class="collapsible__heading footer__heading nav__item-1">Item 2 </h2>
+             <svg class="icon icon--primary collapsible--chevron">
+               <use xlink:href="images/sprite.svg#easy"></use>
+             </svg>
+        
+       </header>
+       <div class="collapsible__content">
+         <ul>
+           <li class="nav__item-1"> <a href="#">Website Hosting</a></li>
+           <li class="nav__item-1"><a href="#">Free Automated Wordpress</a></li>
+           <li class="nav__item-1"><a href="#">Migrations</a></li>
+         </ul>      </div>
+     </section>
+     <section class="collapsible footer__section">
+       <header class="collapsible--header">
+         <h2 class="collapsible__heading footer__heading nav__item-1">Item 3 </h2>
+             <svg class="icon icon--primary collapsible--chevron">
+               <use xlink:href="images/sprite.svg#easy"></use>
+             </svg>
+        
+       </header>
+       <div class="collapsible__content">
+         <ul>
+           <li class="nav__item-1"><a href="#">Website Hosting</a></li>
+           <li class="nav__item-1"><a href="#">Free Automated Wordpress</a></li>
+           <li class="nav__item-1"><a href="#">Migrations</a></li>
+         </ul>      </div>
+     </section>
+     <section class="footer__brand">
+       <img src="images/site_logo.png" alt="the image of the logo">
+       <p class="footer__copyright nav__item-1">Copyright 2023 Hammad Ahmed</p>
+     </section>
+      </div>
+    </footer>
+    
+    <script src="js/slider.js"></script>
+    <script src="js/sliderliteral.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+      AOS.init();
+    </script>
+</body>
+</html>
