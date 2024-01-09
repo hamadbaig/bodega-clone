@@ -1182,7 +1182,221 @@ const data = [
   },
 ];
 
-var sort = "null";
+// var sort = "null";
+// const itemsPerPage = 12;
+// let currentPage = 1;
+// updateCartQuantity();
+// debugger;
+
+// function renderProducts(page, Product, format) {
+//   debugger;
+//   sort = format;
+//   var currentdata = Product;
+//   if (sort == "lowToHigh") {
+//     currentdata.sort((a, b) => a.price - b.price);
+//   } else if (sort == "highToLow") {
+//     currentdata.sort((a, b) => b.price - a.price);
+//   } else {
+//     currentdata = Product;
+//   }
+//   const startIndex = (page - 1) * itemsPerPage;
+//   const endIndex = page * itemsPerPage;
+//   const productsForPage = currentdata.slice(startIndex, endIndex);
+//   const productHTMLArray = productsForPage.map(
+//     (product) => `
+//     <div id=${product._id.$oid} class="pro">
+//         <div class="pro--img">
+//             <img src="${product.image}" alt="">
+//         </div>
+//         <div class="pro--desc">
+//             <h3>${product.name}</h3>
+//             <h3>${product.category}</h3>
+//             <h3>${product.price}$</h3>
+//         </div>
+//         <div class="pro--btn">
+//         <button class="btn  add-to-cart"  onclick="Addtocart('${product.name}', '${product.image}', ${product.price}, '${product._id.$oid}'); return false;"><i class="fas fa-shopping-cart"></i>ANADIR</button>
+
+//         </div>
+//     </div>
+// `
+//   );
+
+//   productSection.innerHTML = productHTMLArray;
+//   const totalPages = Math.ceil(currentdata.length / itemsPerPage);
+//   console.log(currentdata);
+//   const pageNumbers = Array.from(
+//     { length: totalPages },
+//     (_, index) => index + 1
+//   );
+//   const paginationHTML = pageNumbers
+
+//     .map(
+//       (number) => `
+//     <button class="pagenumber ${
+//       page === number ? "active-1" : ""
+//     }" data-page="${number}">
+//       ${number}
+//     </button>
+//   `
+//     )
+//     .join("");
+//   paging.innerHTML = paginationHTML;
+//   document.querySelectorAll(".pagenumber").forEach((button) => {
+//     button.addEventListener("click", (event) => {
+//       const clickedPage = parseInt(
+//         event.currentTarget.getAttribute("data-page"),
+//         10
+//       );
+//       renderProducts(clickedPage, currentdata, sort);
+//     });
+//   });
+// }
+// renderProducts(currentPage, data, sort);
+// function handleSortChange(selectedValue) {
+//   let sortOrder;
+//   if (selectedValue === "lowToHigh") {
+//     sortOrder = "asc";
+//   } else if (selectedValue === "highToLow") {
+//     sortOrder = "desc";
+//   }
+
+//   renderProducts(1, data, sortOrder);
+// }
+// let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+// if (!cart) {
+//   cart = [];
+// }
+
+// localStorage.setItem("cart", JSON.stringify(cart));
+
+// function Addtocart(name, image, price, id) {
+//   let cartData = JSON.parse(localStorage.getItem("cart")) || [];
+
+//   let num = 1;
+//   const existingProductIndex = cartData.findIndex(
+//     (product) => product.id === id
+//   );
+
+//   if (existingProductIndex !== -1) {
+//     cartData[existingProductIndex].quantity =
+//       (cartData[existingProductIndex].quantity || 1) + 1;
+//   } else {
+//     const productData = {
+//       name: name,
+//       image: image,
+//       price: price,
+//       id: id,
+//       quantity: num,
+//       total: num * price,
+//     };
+//     cartData.push(productData);
+//   }
+
+//   localStorage.setItem("cart", JSON.stringify(cartData));
+
+//   console.log("Updated Cart Data:", cartData);
+//   updateCartQuantity();
+//   alert(`${name} has been added to your cart!`);
+// }
+
+// function updateCartQuantity() {
+//   const cartQuantityElement = document.getElementById("cartQuantity");
+//   let cartlength = JSON.parse(localStorage.getItem("cart"));
+//   cartQuantityElement.textContent = cartlength.length;
+//   console.log(cartlength.length);
+// }
+// debugger;
+// renderCategory();
+
+// function renderCategory() {
+//   const categories = {};
+
+//   data.forEach((product) => {
+//     const category = product.category;
+//     categories[category] = (categories[category] || 0) + 1;
+//   });
+
+//   const categoryHTMLArray = Object.entries(categories).map(
+//     ([category, count]) => `
+//     <li >
+//       <a href="#">
+//         <h3 class="li"onclick="handleCategoryClick('${category}'); return false;">${category} (${count})</h3>
+//       </a>
+//     </li>
+//   `
+//   );
+
+//   const allCategoryHTML = categoryHTMLArray.join("");
+//   categorySection.innerHTML = allCategoryHTML;
+// }
+
+// // cart section
+
+// var categoryProduct = [];
+// function handleCategoryClick(category) {
+//   categoryProduct = [];
+
+//   for (var i = 0; i < data.length; i++) {
+//     if (data[i].category == category) categoryProduct.push(data[i]);
+//   }
+//   renderProducts(currentPage, categoryProduct, sort);
+//   const totalPages = Math.ceil(categoryProduct.length / itemsPerPage);
+
+//   const pageNumbers = Array.from(
+//     { length: totalPages },
+//     (_, index) => index + 1
+//   );
+
+//   console.log(categoryProduct);
+//   const paginationHTML = pageNumbers
+//     .map(
+//       (number) => `
+//     <button class="pagenumber"onclick="renderProducts(${number},categoryProduct,sort); return false;">${number}</button>
+//   `
+//     )
+//     .join("");
+
+//   paging.innerHTML = paginationHTML;
+// }
+// function search() {
+//   var inputvalue = document.getElementById("searchInput").value.toLowerCase();
+//   const filteredData = data.filter((item) => {
+//     const itemName = item.name.toLowerCase();
+//     return itemName.includes(inputvalue);
+//   });
+
+//   // Render the filtered data
+//   renderProducts(currentPage, filteredData, sort);
+// }
+// const dataArray = [
+//   /* Your array of data goes here */
+// ];
+// const minRangeSlider = document.getElementById("min-range-slider");
+// const maxRangeSlider = document.getElementById("max-range-slider");
+// const selectedRangeElement = document.getElementById("selected-range");
+// const filteredDataElement = document.getElementById("filtered-data");
+// function updateFilteredData() {
+//   const min = parseInt(minRangeSlider.value);
+//   const max = parseInt(maxRangeSlider.value);
+
+//   const filteredData = data.filter(
+//     (item) => parseFloat(item.price) >= min && parseFloat(item.price) <= max
+//   );
+
+//   // Display the selected range
+//   selectedRangeElement.textContent = `${min} - ${max}`;
+
+//   renderProducts(currentPage, filteredData, sort);
+// }
+
+// // Initial update
+// // updateFilteredData();
+
+// // Add event listener to update on slider change
+// minRangeSlider.addEventListener("input", updateFilteredData);
+// maxRangeSlider.addEventListener("input", updateFilteredData);
+let sort = null;
 const itemsPerPage = 12;
 let currentPage = 1;
 updateCartQuantity();
@@ -1191,17 +1405,15 @@ debugger;
 function renderProducts(page, Product, format) {
   debugger;
   sort = format;
-  var currentdata = Product;
-  if (sort == "lowToHigh") {
-    currentdata.sort((a, b) => a.price - b.price);
-  } else if (sort == "highToLow") {
-    currentdata.sort((a, b) => b.price - a.price);
-  } else {
-    currentdata = Product;
+  const currentData = [...Product]; // Create a copy to avoid modifying the original array
+  if (sort === "lowToHigh") {
+    currentData.sort((a, b) => a.price - b.price);
+  } else if (sort === "highToLow") {
+    currentData.sort((a, b) => b.price - a.price);
   }
   const startIndex = (page - 1) * itemsPerPage;
   const endIndex = page * itemsPerPage;
-  const productsForPage = currentdata.slice(startIndex, endIndex);
+  const productsForPage = currentData.slice(startIndex, endIndex);
   const productHTMLArray = productsForPage.map(
     (product) => `
     <div id=${product._id.$oid} class="pro">
@@ -1214,22 +1426,20 @@ function renderProducts(page, Product, format) {
             <h3>${product.price}$</h3>
         </div>
         <div class="pro--btn">
-        <button class="btn  add-to-cart"  onclick="Addtocart('${product.name}', '${product.image}', ${product.price}, '${product._id.$oid}'); return false;"><i class="fas fa-shopping-cart"></i>ANADIR</button>
-
-        </div>  
+        <button class="btn add-to-cart" onclick="addToCart('${product.name}', '${product.image}', ${product.price}, '${product._id.$oid}'); return false;"><i class="fas fa-shopping-cart"></i>ANADIR</button>
+        </div>
     </div>
-`
+  `
   );
 
-  productSection.innerHTML = productHTMLArray;
-  const totalPages = Math.ceil(currentdata.length / itemsPerPage);
-  console.log(currentdata);
+  productSection.innerHTML = productHTMLArray.join("");
+  const totalPages = Math.ceil(currentData.length / itemsPerPage);
+  console.log(currentData);
   const pageNumbers = Array.from(
     { length: totalPages },
     (_, index) => index + 1
   );
   const paginationHTML = pageNumbers
-
     .map(
       (number) => `
     <button class="pagenumber ${
@@ -1247,21 +1457,17 @@ function renderProducts(page, Product, format) {
         event.currentTarget.getAttribute("data-page"),
         10
       );
-      renderProducts(clickedPage, currentdata, sort);
+      renderProducts(clickedPage, currentData, sort);
     });
   });
 }
-renderProducts(currentPage, data, sort);
-function handleSortChange(selectedValue) {
-  let sortOrder;
-  if (selectedValue === "lowToHigh") {
-    sortOrder = "asc";
-  } else if (selectedValue === "highToLow") {
-    sortOrder = "desc";
-  }
 
-  renderProducts(1, data, sortOrder);
+renderProducts(currentPage, data, sort);
+
+function handleSortChange(selectedValue) {
+  renderProducts(1, data, selectedValue);
 }
+
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 if (!cart) {
@@ -1270,9 +1476,8 @@ if (!cart) {
 
 localStorage.setItem("cart", JSON.stringify(cart));
 
-function Addtocart(name, image, price, id) {
+function addToCart(name, image, price, id) {
   let cartData = JSON.parse(localStorage.getItem("cart")) || [];
-
   let num = 1;
   const existingProductIndex = cartData.findIndex(
     (product) => product.id === id
@@ -1294,7 +1499,6 @@ function Addtocart(name, image, price, id) {
   }
 
   localStorage.setItem("cart", JSON.stringify(cartData));
-
   console.log("Updated Cart Data:", cartData);
   updateCartQuantity();
   alert(`${name} has been added to your cart!`);
@@ -1302,10 +1506,11 @@ function Addtocart(name, image, price, id) {
 
 function updateCartQuantity() {
   const cartQuantityElement = document.getElementById("cartQuantity");
-  let cartlength = JSON.parse(localStorage.getItem("cart"));
-  cartQuantityElement.textContent = cartlength.length;
-  console.log(cartlength.length);
+  let cartLength = JSON.parse(localStorage.getItem("cart")) || [];
+  cartQuantityElement.textContent = cartLength.length;
+  console.log(cartLength.length);
 }
+
 debugger;
 renderCategory();
 
@@ -1319,9 +1524,9 @@ function renderCategory() {
 
   const categoryHTMLArray = Object.entries(categories).map(
     ([category, count]) => `
-    <li >
+    <li>
       <a href="#">
-        <h3 class="li"onclick="handleCategoryClick('${category}'); return false;">${category} (${count})</h3>
+        <h3 class="li" onclick="handleCategoryClick('${category}'); return false;">${category} (${count})</h3>
       </a>
     </li>
   `
@@ -1331,15 +1536,12 @@ function renderCategory() {
   categorySection.innerHTML = allCategoryHTML;
 }
 
-// cart section
+// Cart section
 
-var categoryProduct = [];
+let categoryProduct = [];
+
 function handleCategoryClick(category) {
-  categoryProduct = [];
-
-  for (var i = 0; i < data.length; i++) {
-    if (data[i].category == category) categoryProduct.push(data[i]);
-  }
+  categoryProduct = data.filter((item) => item.category === category);
   renderProducts(currentPage, categoryProduct, sort);
   const totalPages = Math.ceil(categoryProduct.length / itemsPerPage);
 
@@ -1352,30 +1554,31 @@ function handleCategoryClick(category) {
   const paginationHTML = pageNumbers
     .map(
       (number) => `
-    <button class="pagenumber"onclick="renderProducts(${number},categoryProduct,sort); return false;">${number}</button>
+    <button class="pagenumber" onclick="renderProducts(${number}, categoryProduct, sort); return false;">${number}</button>
   `
     )
     .join("");
 
   paging.innerHTML = paginationHTML;
 }
+
 function search() {
   var inputvalue = document.getElementById("searchInput").value.toLowerCase();
-  const filteredData = data.filter((item) => {
-    const itemName = item.name.toLowerCase();
-    return itemName.includes(inputvalue);
-  });
-
-  // Render the filtered data
+  const filteredData = data.filter((item) =>
+    item.name.toLowerCase().includes(inputvalue)
+  );
   renderProducts(currentPage, filteredData, sort);
 }
+
 const dataArray = [
   /* Your array of data goes here */
 ];
+
 const minRangeSlider = document.getElementById("min-range-slider");
 const maxRangeSlider = document.getElementById("max-range-slider");
 const selectedRangeElement = document.getElementById("selected-range");
 const filteredDataElement = document.getElementById("filtered-data");
+
 function updateFilteredData() {
   const min = parseInt(minRangeSlider.value);
   const max = parseInt(maxRangeSlider.value);
