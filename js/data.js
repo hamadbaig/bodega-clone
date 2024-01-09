@@ -1187,7 +1187,6 @@ const itemsPerPage = 12;
 let currentPage = 1;
 updateCartQuantity();
 debugger;
-renderProducts(currentPage, data, sort);
 
 function renderProducts(page, Product, format) {
   debugger;
@@ -1252,7 +1251,7 @@ function renderProducts(page, Product, format) {
     });
   });
 }
-
+renderProducts(currentPage, data, sort);
 function handleSortChange(selectedValue) {
   let sortOrder;
   if (selectedValue === "lowToHigh") {
