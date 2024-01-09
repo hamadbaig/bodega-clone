@@ -133,6 +133,8 @@ p {
   font-size: 2rem;
   z-index: 2;
   border: 2px solid rebeccapurple;
+  justify-content: center;
+  text-align: center;
 }
 
 .nav__item-1:hover .sub-list {
@@ -437,7 +439,7 @@ h4 {
   position: absolute;
   /* top: 100%; */
   min-width: 160px;
-  left: 0;
+  left: 60%;
   z-index: 2;
   color: white;
 }
@@ -450,7 +452,42 @@ h4 {
 .nav-item:hover .sub-list {
   display: block;
 }
-
+/* allbrands */
+.brands {
+  padding: 5rem;
+}
+.all--brands {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.brand-img {
+  width: 15%;
+  height: 20%;
+}
+.brand-img img {
+  width: 100%;
+}
+.active-1 {
+  background-color: #8c3303;
+}
+.__btn {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  background-color: wheat; /* Change this to your desired background color */
+  color: black; /* Change this to your desired text color */
+  cursor: pointer;
+  text-align: center;
+  line-height: 30px;
+  font-size: 2rem;
+  border-radius: 2rem;
+}
+.__q-input {
+  border: none;
+  width: 40px;
+  text-align: center;
+}
 @media screen and (min-width: 786px) {
   h1 {
     font-size: 3rem;
@@ -518,23 +555,6 @@ h4 {
   .all--services {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-  }
-  .__q-input {
-    border: none;
-    width: 40px;
-    text-align: center;
-  }
-  .__btn {
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    background-color: wheat; /* Change this to your desired background color */
-    color: black; /* Change this to your desired text color */
-    cursor: pointer;
-    text-align: center;
-    line-height: 30px;
-    font-size: 2rem;
-    border-radius: 2rem;
   }
 }
 @media screen and (min-width: 1024px) {
@@ -623,5 +643,8 @@ h4 {
   .pro--img {
     width: 30rem;
     height: 30rem;
+  }
+  .sub-list {
+    left: 0;
   }
 }

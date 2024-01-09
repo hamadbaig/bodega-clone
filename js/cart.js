@@ -10,7 +10,7 @@ function updateCartQuantity() {
 
   // Render cart items after updating quantity
 }
-renderCartitems();
+
 function renderCartitems() {
   let allcart = JSON.parse(localStorage.getItem("cart"));
 
@@ -50,7 +50,9 @@ function renderCartitems() {
     </td>
   
     <td width="10%">
-      <a href="#"onclick="removeCartItem('${cartItem.name}'); return false;">
+      <a href="#"onclick="removeCartcrossItem('${
+        cartItem.name
+      }'); return false;">
         <img class=" __image-2" src="images/cross.jpg" alt="demo">
       </a>
   </td>
@@ -72,6 +74,20 @@ function renderCartitems() {
   const total = subtotal + vat + delivery;
 
   document.getElementById("total").innerText = total;
+}
+renderCartitems();
+function removeCartcrossItem(name) {
+  let allcart = JSON.parse(localStorage.getItem("cart"));
+  debugger;
+  // Find the index of the item with the specified name
+  const indexToRemove = allcart.findIndex((item) => item.name === name);
+
+  allcart.splice(indexToRemove, 1);
+
+  localStorage.setItem("cart", JSON.stringify(allcart));
+
+  renderCartitems();
+  updateCartQuantity();
 }
 function removeCartItem(name) {
   let allcart = JSON.parse(localStorage.getItem("cart"));

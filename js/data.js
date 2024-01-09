@@ -1181,14 +1181,12 @@ const data = [
     promoted_price: 4.99,
   },
 ];
-let productData = [];
-localStorage.setItem("productData", JSON.stringify(data));
-console.log(productData);
 
 var sort = "null";
 const itemsPerPage = 12;
 let currentPage = 1;
 updateCartQuantity();
+debugger;
 renderProducts(currentPage, data, sort);
 
 function renderProducts(page, Product, format) {
@@ -1226,22 +1224,35 @@ function renderProducts(page, Product, format) {
 
   productSection.innerHTML = productHTMLArray;
   const totalPages = Math.ceil(currentdata.length / itemsPerPage);
-
+  console.log(currentdata);
   const pageNumbers = Array.from(
     { length: totalPages },
     (_, index) => index + 1
   );
-  debugger;
   const paginationHTML = pageNumbers
+
     .map(
       (number) => `
-  <button class="pagenumber" onclick="renderProducts((${number}), data,sort); return false;">${number}</button>
-`
+    <button class="pagenumber ${
+      page === number ? "active-1" : ""
+    }" data-page="${number}">
+      ${number}
+    </button>
+  `
     )
     .join("");
-
   paging.innerHTML = paginationHTML;
+  document.querySelectorAll(".pagenumber").forEach((button) => {
+    button.addEventListener("click", (event) => {
+      const clickedPage = parseInt(
+        event.currentTarget.getAttribute("data-page"),
+        10
+      );
+      renderProducts(clickedPage, currentdata, sort);
+    });
+  });
 }
+
 function handleSortChange(selectedValue) {
   let sortOrder;
   if (selectedValue === "lowToHigh") {
@@ -1287,6 +1298,7 @@ function Addtocart(name, image, price, id) {
 
   console.log("Updated Cart Data:", cartData);
   updateCartQuantity();
+  alert(`${name} has been added to your cart!`);
 }
 
 function updateCartQuantity() {
@@ -1295,7 +1307,7 @@ function updateCartQuantity() {
   cartQuantityElement.textContent = cartlength.length;
   console.log(cartlength.length);
 }
-
+debugger;
 renderCategory();
 
 function renderCategory() {
@@ -1366,8 +1378,6 @@ const maxRangeSlider = document.getElementById("max-range-slider");
 const selectedRangeElement = document.getElementById("selected-range");
 const filteredDataElement = document.getElementById("filtered-data");
 function updateFilteredData() {
-  debugger;
-
   const min = parseInt(minRangeSlider.value);
   const max = parseInt(maxRangeSlider.value);
 
