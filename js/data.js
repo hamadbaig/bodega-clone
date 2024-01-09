@@ -1460,6 +1460,7 @@ function renderProducts(page, Product, format) {
       renderProducts(clickedPage, currentData, sort);
     });
   });
+  renderCategory(currentData);
 }
 
 renderProducts(currentPage, data, sort);
@@ -1512,14 +1513,38 @@ function updateCartQuantity() {
 }
 
 debugger;
-renderCategory();
+renderCategory(data);
 
-function renderCategory() {
+// function renderCategory() {
+//   const categories = {};
+
+//   data.forEach((product) => {
+//     const category = product.category;
+//     categories[category] = (categories[category] || 0) + 1;
+//   });
+
+//   const categoryHTMLArray = Object.entries(categories).map(
+//     ([category, count]) => `
+//     <li>
+//       <a href="#">
+//         <h3 class="li" onclick="handleCategoryClick('${category}'); return false;">${category} (${count})</h3>
+//       </a>
+//     </li>
+//   `
+//   );
+
+//   const allCategoryHTML = categoryHTMLArray.join("");
+//   categorySection.innerHTML = allCategoryHTML;
+// }
+function renderCategory(currentdata) {
   const categories = {};
 
   data.forEach((product) => {
     const category = product.category;
-    categories[category] = (categories[category] || 0) + 1;
+    const categoryCount = currentdata.filter(
+      (item) => item.category === category
+    ).length;
+    categories[category] = categoryCount;
   });
 
   const categoryHTMLArray = Object.entries(categories).map(
@@ -1535,7 +1560,6 @@ function renderCategory() {
   const allCategoryHTML = categoryHTMLArray.join("");
   categorySection.innerHTML = allCategoryHTML;
 }
-
 // Cart section
 
 let categoryProduct = [];
@@ -1543,23 +1567,23 @@ let categoryProduct = [];
 function handleCategoryClick(category) {
   categoryProduct = data.filter((item) => item.category === category);
   renderProducts(currentPage, categoryProduct, sort);
-  const totalPages = Math.ceil(categoryProduct.length / itemsPerPage);
+  // const totalPages = Math.ceil(categoryProduct.length / itemsPerPage);
 
-  const pageNumbers = Array.from(
-    { length: totalPages },
-    (_, index) => index + 1
-  );
+  // const pageNumbers = Array.from(
+  //   { length: totalPages },
+  //   (_, index) => index + 1
+  // );
 
-  console.log(categoryProduct);
-  const paginationHTML = pageNumbers
-    .map(
-      (number) => `
-    <button class="pagenumber" onclick="renderProducts(${number}, categoryProduct, sort); return false;">${number}</button>
-  `
-    )
-    .join("");
+  // console.log(categoryProduct);
+  // const paginationHTML = pageNumbers
+  //   .map(
+  //     (number) => `
+  //   <button class="pagenumber" onclick="renderProducts(${number}, categoryProduct, sort); return false;">${number}</button>
+  // `
+  //   )
+  //   .join("");
 
-  paging.innerHTML = paginationHTML;
+  // paging.innerHTML = paginationHTML;
 }
 
 function search() {
@@ -1569,10 +1593,6 @@ function search() {
   );
   renderProducts(currentPage, filteredData, sort);
 }
-
-const dataArray = [
-  /* Your array of data goes here */
-];
 
 const minRangeSlider = document.getElementById("min-range-slider");
 const maxRangeSlider = document.getElementById("max-range-slider");
@@ -1587,15 +1607,10 @@ function updateFilteredData() {
     (item) => parseFloat(item.price) >= min && parseFloat(item.price) <= max
   );
 
-  // Display the selected range
   selectedRangeElement.textContent = `${min} - ${max}`;
 
   renderProducts(currentPage, filteredData, sort);
 }
 
-// Initial update
-// updateFilteredData();
-
-// Add event listener to update on slider change
 minRangeSlider.addEventListener("input", updateFilteredData);
 maxRangeSlider.addEventListener("input", updateFilteredData);
